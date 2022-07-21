@@ -1,14 +1,20 @@
-import { useState } from 'react'
+
 import reactLogo from './assets/react.svg'
 import './App.css'
 import { Datepicker } from './Datepicker';
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Products } from './components/Products/Product';
+import { ProductDetail } from './components/ProductDetail/ProductDetail';
+
 function App() {
 
   return (
-    <div className="App flex flex-col justify-center min-w-screen min-h-screen bg-[url(./assets/images/img-searcher-bgImage-2022.jpg)] bg-center bg-cover">
+  
+    <div>
+        <div className="App flex flex-col justify-center min-w-screen min-h-screen bg-[url(./assets/images/img-searcher-bgImage-2022.jpg)] bg-center bg-cover">
 
-      <h2 className='self-center'>
+      <h2 className='self-center font-Futura text-white'>
         Busca tu próximo destino:
       </h2>
 
@@ -70,8 +76,15 @@ function App() {
         </div>
 
         <button type='submit'>Buscar</button>
-      </form>
+      </form>      
 
+    </div>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Products/>}/>
+          <Route path='/product/:id' element={<ProductDetail/>}/>
+        </Routes>
+      </Router>
     </div>
   )
 }
