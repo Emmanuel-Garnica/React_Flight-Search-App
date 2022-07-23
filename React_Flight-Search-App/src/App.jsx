@@ -6,6 +6,7 @@ import { Datepicker } from './Datepicker';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Products } from './components/Products/Product';
 import { ProductDetail } from './components/ProductDetail/ProductDetail';
+import { CustomSelect } from './components/FormElements/ReactSelect';
 
 function App() {
 
@@ -23,14 +24,14 @@ function App() {
           <label htmlFor="">
             Origen:
           </label>
-          <input type="text" />
+          <CustomSelect/>
         </div>
         
         <div className="flex flex-col items-start">
           <label htmlFor="">
             Destino:
           </label>
-          <input type="text" />
+          <CustomSelect/>
         </div>
 
         <div className="flex flex-col items-start">
@@ -51,28 +52,14 @@ function App() {
           <label htmlFor="">
             Adultos:
           </label>
-          <select name="" id="" className='w-full'>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+          <CustomSelect/>
         </div>
 
         <div className="flex flex-col items-start justify-center">
           <label htmlFor="">
             Niños:
           </label>
-          <select name="" id="" className='w-full'>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+          <CustomSelect/>
         </div>
 
         <button type='submit'>Buscar</button>
