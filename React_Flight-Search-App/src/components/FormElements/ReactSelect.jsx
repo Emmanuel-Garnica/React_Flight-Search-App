@@ -8,5 +8,5 @@ const options = [
 ]
 
 export const CustomSelect = () => (
-  <Select options={options} />
+  <Select options={options} className="w-full"/>
 )
