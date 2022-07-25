@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Products } from './components/Products/Product';
 import { ProductDetail } from './components/ProductDetail/ProductDetail';
 import { CustomSelect } from './components/FormElements/ReactSelect';
+import { SearchResults } from './components/Results/Results';
+import { ResultCard } from './components/Results/ResultCard';
 
 function App() {
 
@@ -68,12 +70,17 @@ function App() {
       </form>      
 
     </section>
+    
       <Router>
+        <SearchResults></SearchResults>
         <Routes>
           <Route path='/' element={<Products/>}/>
           <Route path='/product/:id' element={<ProductDetail/>}/>
+          
+          <Route path='/flight/:id' element={<ResultCard/>}/>
         </Routes>
       </Router>
+      
     </div>
   )
 }
