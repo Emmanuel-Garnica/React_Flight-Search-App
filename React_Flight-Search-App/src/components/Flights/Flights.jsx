@@ -1,12 +1,12 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { ResultCard } from "./ResultCard";
+import { FlightCard } from "./FlightCard";
 
 axios.defaults.baseURL = "https://test.api.amadeus.com";
 axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-axios.defaults.headers.get["Authorization"] = "Bearer WFYESLlyGYXqxsYYabAqsFD93I6T";
+axios.defaults.headers.get["Authorization"] = "Bearer MhEA8R2QjZ3H3Fr3i8y7AgLiFRgv";
 
-export const SearchResults = () => {
+export const Flights = () => {
 
     const[flights, setFlights] = useState([])
 
@@ -33,10 +33,12 @@ export const SearchResults = () => {
 
     return(
         <section>
-            <h3>Prueba de peticion al api</h3>
+            <h3 className="self-center font-Futura font-bold tracking-wide text-[#1A4762] text-4xl text-center drop-shadow-lg shadow-black mx-4 my-12 lg:text-4xl">
+                Vuelos encontrados
+            </h3>
             {flights && flights.map((flight) => {
                 return(
-                    <ResultCard
+                    <FlightCard
                         key={flight.id}
                         id={flight.id}
                         numberOfBookableSeats={flight.numberOfBookableSeats}

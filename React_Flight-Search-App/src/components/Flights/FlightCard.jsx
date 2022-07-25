@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export const ResultCard = ({ id, numberOfBookableSeats, lastTicketingDate, totalPrice, currency }) => {
+export const FlightCard = ({ id, numberOfBookableSeats, lastTicketingDate, totalPrice, currency }) => {
     return(
         <div>
             <div>
