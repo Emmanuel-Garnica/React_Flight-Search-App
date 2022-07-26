@@ -1,10 +1,7 @@
-import axios from "axios"
 import { FlightCard } from "./FlightCard";
 
 
 export const Flights = ({flights}) => {
-
-    console.log(flights)
 
     return(
         <section id="flightResults" className="pt-1">

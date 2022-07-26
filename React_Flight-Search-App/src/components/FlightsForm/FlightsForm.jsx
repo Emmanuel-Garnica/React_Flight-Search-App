@@ -1,5 +1,4 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
 import { Flights } from "../Flights/Flights"
 import { Datepicker } from "../FormElements/Datepicker"
 import { CustomSelect } from "../FormElements/ReactSelect"
@@ -26,7 +25,6 @@ export const FlightsForm = () => {
             data: qs.stringify(tokenRequestBody)
         })
         .then((result) => {
-            console.log(result)
             axios.get(`/v2/shopping/flight-offers?originLocationCode=${originCode}&destinationLocationCode=${destinationCode}&departureDate=${departureDate}&adults=${adults}`, {
                 headers: {
                     "Authorization": `Bearer ${result.data.access_token}`
@@ -34,7 +32,6 @@ export const FlightsForm = () => {
             })
             .then((respuesta) => {
                 setFlights(respuesta.data.data)
-                console.log(respuesta.data.data)
             })
         })
         
@@ -51,7 +48,6 @@ export const FlightsForm = () => {
         // returnDate: returnDate.value,
         adults: adults.value
         }
-        console.log(body)
         getFlightsData(body)
     }
 
