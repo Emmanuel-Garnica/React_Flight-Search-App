@@ -1,14 +1,10 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
 import { FlightCard } from "./FlightCard";
 
-axios.defaults.baseURL = "https://test.api.amadeus.com";
-axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-axios.defaults.headers.get["Authorization"] = "Bearer MhEA8R2QjZ3H3Fr3i8y7AgLiFRgv";
 
-export const Flights = () => {
+export const Flights = ({flights}) => {
 
-    const[flights, setFlights] = useState([])
+    console.log(flights)
 
     // const tokenRequestBody = {
     //     grant_type: 'client_credentials',
@@ -23,17 +19,11 @@ export const Flights = () => {
     //     })
     // })
 
-    useEffect(() => {
-        axios.get('/v2/shopping/flight-offers?originLocationCode=BOG&destinationLocationCode=MEX&departureDate=2022-10-06&adults=1')
-        .then((respuesta) => {
-            console.log(respuesta.data.data)
-            setFlights(respuesta.data.data)
-        })
-    }, [])
+    
 
     return(
-        <section>
-            <h3 className="self-center font-Futura font-bold tracking-wide text-[#1A4762] text-4xl text-center drop-shadow-lg shadow-black mx-4 my-12 lg:text-4xl">
+        <section id="flightResults" className="pt-1">
+            <h3 className="self-center font-futura font-bold tracking-wide text-[#555555] text-4xl text-center drop-shadow-lg shadow-black mx-4 my-12 lg:mb-20 lg:text-4xl">
                 Vuelos encontrados
             </h3>
             {flights && flights.map((flight) => {

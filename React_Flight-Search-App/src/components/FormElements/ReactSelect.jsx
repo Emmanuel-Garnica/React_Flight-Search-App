@@ -7,6 +7,9 @@ const options = [
   { value: 'vanilla', label: 'Vanilla' }
 ]
 
-export const CustomSelect = () => (
-  <Select options={options} className="w-full"/>
+export const CustomSelect = (props) => (
+  <Select 
+    options={options} 
+    className="w-full"
+    {...props}/>
 )
