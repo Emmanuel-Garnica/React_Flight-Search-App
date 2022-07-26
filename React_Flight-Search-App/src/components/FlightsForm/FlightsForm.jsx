@@ -1,18 +1,43 @@
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Flights } from "../Flights/Flights"
 import { Datepicker } from "../FormElements/Datepicker"
 import { CustomSelect } from "../FormElements/ReactSelect"
+import qs from "qs"
+
+axios.defaults.baseURL = "https://test.api.amadeus.com";
+axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
 export const FlightsForm = () => {
     const [flights, setFlights] = useState([])
 
+    const tokenRequestBody = 
+     {
+        grant_type: 'client_credentials',
+        client_id: '1KLI22z0GGAHXq6fMrQiGfmPGGWfDP8o',
+        client_secret: 'LlvmGJ7mb9CSxPG1'
+    }
+
     const getFlightsData = ({ originCode, destinationCode, departureDate, adults }) => {
-        axios.get(`/v2/shopping/flight-offers?originLocationCode=${originCode}&destinationLocationCode=${destinationCode}&departureDate=${departureDate}&adults=${adults}`)
-        .then((respuesta) => {
-            setFlights(respuesta.data.data)
-            console.log(respuesta.data.data)
+
+        axios({
+            method: 'post',
+            url: '/v1/security/oauth2/token',
+            data: qs.stringify(tokenRequestBody)
         })
+        .then((result) => {
+            console.log(result)
+            axios.get(`/v2/shopping/flight-offers?originLocationCode=${originCode}&destinationLocationCode=${destinationCode}&departureDate=${departureDate}&adults=${adults}`, {
+                headers: {
+                    "Authorization": `Bearer ${result.data.access_token}`
+                }
+            })
+            .then((respuesta) => {
+                setFlights(respuesta.data.data)
+                console.log(respuesta.data.data)
+            })
+        })
+        
     }
 
     async function getFlights (event) {
